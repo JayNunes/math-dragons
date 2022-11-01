@@ -7,6 +7,10 @@ const $nextButton = $("#next_button");
 const $controls = $(".controls");
 const $openChest = $(".open_chest");
 const $reward = $(".reward");
+const $rewardsWon = $(".rewards_won");
+const $rewardImage = $(".rewards_won *");
+const $closeRewards = $(".close_rewards");
+const $score = $(".score");
 const $starIcon = $(".star_icon");
 const $answerButtons = $(".answer_buttons");
 const $closedChest = $(".closed_chest");
@@ -24,6 +28,8 @@ let currentResult;
 let highScore = 0;
 let goalInputValue = 10;
 let goal = 10;
+// let rewardsVisible = false;
+// let rewardZoom = false;
 
 //listeners
 $startButton.on("click", function () {
@@ -65,6 +71,27 @@ $submitGoal.on("submit", (e) => {
 
 $openModal.on("click", () => {
   modal.showModal();
+});
+
+$score.on("click", () => {
+  $rewardsWon.css({ visibility: "visible", opacity: "1" });
+});
+
+$rewardImage.on("click", (e) => {
+  $zoomMe = $(e.target);
+  if (
+    $zoomMe.attr("class") === "reward_title" ||
+    $zoomMe.attr("class") === "close_rewards"
+  ) {
+    return;
+  } else {
+    $zoomMe.toggleClass("zoom_reward");
+  }
+  e.stopPropagation();
+});
+
+$closeRewards.on("click", () => {
+  $rewardsWon.css({ visibility: "hidden", opacity: "0" });
 });
 
 // When start button is clicked the first random question appears, along with two answer buttons.
@@ -139,7 +166,7 @@ function goalMet() {
   const confettiSection = document.querySelector(".high_score");
   party.confetti(confettiSection, {
     count: party.variation.range(500, 1000),
-    spread: 2000,
+    spread: 1000,
   });
   $("#youWin_wav")[0].play();
   $reward.attr("src", "./assets/trophy.png");
