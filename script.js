@@ -22,14 +22,15 @@ const $submitGoal = $(".form");
 const $goalInput = $("#goal");
 const $form = $("form");
 const $openModal = $("#set_goal");
+const $factorChoice = $(".factor_choice");
+const $factorBtn = $(".factor");
 
 // Global variables
 let currentResult;
 let highScore = 0;
 let goalInputValue = 10;
 let goal = 10;
-// let rewardsVisible = false;
-// let rewardZoom = false;
+let factor = "?";
 
 //listeners
 $startButton.on("click", function () {
@@ -77,6 +78,10 @@ $score.on("click", () => {
   $rewardsWon.css({ visibility: "visible", opacity: "1" });
 });
 
+$closeRewards.on("click", () => {
+  $rewardsWon.css({ visibility: "hidden", opacity: "0" });
+});
+
 $rewardImage.on("click", (e) => {
   $zoomMe = $(e.target);
   if (
@@ -90,8 +95,9 @@ $rewardImage.on("click", (e) => {
   e.stopPropagation();
 });
 
-$closeRewards.on("click", () => {
-  $rewardsWon.css({ visibility: "hidden", opacity: "0" });
+$factorBtn.on("click", (e) => {
+  factor = e.currentTarget.dataset.num;
+  $factorChoice.text(factor);
 });
 
 // When start button is clicked the first random question appears, along with two answer buttons.
@@ -106,7 +112,13 @@ function startGame() {
 // When "start" or "next" are clicked, load a random question.
 function loadQuestion() {
   $starIcon.removeClass("shake");
-  const num1 = Math.floor(Math.random() * 12);
+  let num1;
+
+  if (factor === "?") {
+    num1 = Math.floor(Math.random() * 12);
+  } else {
+    num1 = factor;
+  }
   const num2 = Math.floor(Math.random() * 12);
   const wrongAnswer = Math.floor(Math.random() * 110);
   const multiply = (a, b) => a * b;

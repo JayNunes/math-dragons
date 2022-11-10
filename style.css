@@ -264,11 +264,12 @@ button:active {
 }
 
 .modal {
-  /* text-align: center; */
+  color: var(--dark-purple);
   padding: 50px;
   font-family: Arial, Helvetica, sans-serif;
   border-radius: 20px;
   background-color: var(--scroll);
+  max-width: 550px;
 }
 .modal::-webkit-backdrop {
   background: linear-gradient(45deg, #de4772, #400c7c);
@@ -292,10 +293,35 @@ label,
   margin-bottom: 25px;
 }
 
+.factor_container_outer,
+.goal_container {
+  border: 2px solid var(--dark-purple);
+  border-radius: 15px;
+  padding: 25px;
+}
+
+.factor_container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 330px;
+}
+
+.factor {
+  margin: 5px;
+  padding: 8px 15px 10px 15px;
+  width: 65px;
+}
+
+.factor,
 #submit_goal {
   font-size: 1.2rem;
 }
 
+.factor_container_outer {
+  margin-bottom: 25px;
+}
+
+.factor_container_outer,
 form {
   display: flex;
   flex-direction: column;
@@ -305,7 +331,7 @@ form {
 input {
   background-color: var(--scroll);
   font-size: 1.5rem;
-  border: 3px solid black;
+  border: 3px solid var(--dark-purple);
   padding-inline: 5px;
   width: 100px;
   border-radius: 5px;
@@ -471,7 +497,24 @@ footer a:hover {
   .container {
     width: 360px;
   }
+
+  .modal {
+    padding: 15px;
+  }
   .modal p {
     font-size: 1.2rem;
+  }
+  .factor_container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .factor {
+    font-size: 1rem;
+    padding: 8px 12px 10px 12px;
+    width: 60px;
+  }
+
+  .factor {
+    margin: 5px;
   }
 }
