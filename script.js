@@ -42,6 +42,7 @@ $nextButton.on("click", function () {
   $controls.add($openChest).add($reward).addClass("hide");
   $answerButtons.add($closedChest).removeClass("hide");
   $closedChest.removeClass("shake");
+  $reward.attr("src", "#");
 });
 
 $btnA.on("click", function (e) {
@@ -119,6 +120,7 @@ function loadQuestion() {
   } else {
     num1 = factor;
   }
+
   const num2 = Math.floor(Math.random() * 12);
   const wrongAnswer = Math.floor(Math.random() * 110);
   const multiply = (a, b) => a * b;
