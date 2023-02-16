@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="robots" content="noindex" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amaranth:wght@400;700&family=UnifrakturCook:wght@700&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <title>༺Math Dragons༻</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/favicon-16x16.png"
+    />
+  </head>
+  <body>
+    <audio preload="auto" id="start_wav">
+      <source src="./assets/start_.wav" />
+    </audio>
+    <audio preload="auto" id="correct_wav">
+      <source src="./assets/correct_.wav" />
+    </audio>
+    <audio id="tryAgain_wav"><source src="./assets/tryAgain_.wav" /></audio>
+    <audio id="youWin_wav"><source src="./assets/youWin_.wav" /></audio>
+
+    <header>
+      <h1>Math Dragons</h1>
+    </header>
+
+    <main>
+      <div class="container">
+        <div aria-expanded="false" class="rewards_won">
+          <p class="reward_title">Rewards:</p>
+          <div role="button" aria-label="Close rewards" class="close_rewards">
+            &#10005;
+          </div>
+          <div>
+            <ul aria-label="coins" class="coins"></ul>
+          </div>
+          <div>
+            <ul aria-label="riches" class="riches"></ul>
+          </div>
+          <div>
+            <ul aria-label="dragon eggs" class="eggs"></ul>
+          </div>
+          <div>
+            <ul aria-label="baby dragons" class="baby_dragons"></ul>
+          </div>
+        </div>
+        <div class="score">
+          <div
+            role="button"
+            aria-label="reward section"
+            aria-controls="rewards won"
+            class="high_score"
+          >
+            <div class="star_icon">
+              <img src="./assets/star.png" alt="star" />
+            </div>
+            <div aria-label="High Score" class="counter">0</div>
+          </div>
+        </div>
+        <div class="question hide">Question 1</div>
+        <div class="prize_section hide">
+          <img
+            class="closed_chest"
+            src="./assets/rewardChestClosed.gif"
+            alt="Closed Treasure Chest"
+          />
+          <img
+            class="open_chest front hide"
+            src="./assets/rewardChestOpen.gif"
+            alt="Open Treasure Chest"
+          />
+          <img class="reward bounce hide" src="#" alt="Reward" />
+          <img class="open_chest lid hide" src="./assets/rewardChestLid.gif" />
+        </div>
+        <div class="answer_buttons hide">
+          <button aria-label="Choice A" class="btnA">A</button>
+          <button aria-label="Choice B" class="btnB">B</button>
+        </div>
+        <div class="options">
+          <button id="set_goal">Set Goal</button>
+
+          <dialog class="modal" id="modal">
+            <h2>Set your goal</h2>
+            <div class="factor_container_outer">
+              <p>Choose your multiplication factor:</p>
+              <p><span class="factor_choice">?</span> x ? = _</p>
+              <div class="factor_container">
+                <button class="factor" data-num="?">x?</button>
+                <button class="factor" data-num="2">x2</button>
+                <button class="factor" data-num="3">x3</button>
+                <button class="factor" data-num="4">x4</button>
+                <button class="factor" data-num="5">x5</button>
+                <button class="factor" data-num="6">x6</button>
+                <button class="factor" data-num="7">x7</button>
+                <button class="factor" data-num="8">x8</button>
+                <button class="factor" data-num="9">x9</button>
+                <button class="factor" data-num="10">x10</button>
+                <button class="factor" data-num="11">x11</button>
+                <button class="factor" data-num="12">x12</button>
+              </div>
+            </div>
+            <div class="goal_container">
+              <form class="form" method="dialog">
+                <p>How many questions would you like for today's challenge?</p>
+                <label
+                  >Goal:
+                  <input id="goal" value="10" type="number" min="2" max="100"
+                /></label>
+                <button id="submit_goal" type="submit">Let's go!</button>
+              </form>
+            </div>
+          </dialog>
+        </div>
+        <div class="controls">
+          <button id="start_button" class="start_button">Start</button>
+          <button id="next_button" class="next_button hide">Next</button>
+          <button id="play_again_button" class="hide">Play again?</button>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>
+        Created by <a href="https://www.jaynunes.dev">Jay Nunes</a> at
+        <a href="https://junocollege.com/">Juno College</a>
+      </p>
+      <p>All images copyright 2021 Gram Games</p>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
